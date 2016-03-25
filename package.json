@@ -1,0 +1,23 @@
+{
+  "name": "baas",
+  "version": "1.0.0",
+  "description": "Bipol As A Service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bipolalam/bipol_as_a_service.git"
+  },
+  "author": "bipol",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bipolalam/bipol_as_a_service/issues"
+  },
+  "homepage": "https://github.com/bipolalam/bipol_as_a_service#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "sqlite3": "^3.1.2"
+  }
+}

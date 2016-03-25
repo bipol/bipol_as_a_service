@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "noImplicitAny": false,
+        "sourceMap": false
+    },
+    "files": [
+	    "typings/browser.d.ts",
+      "src/components/config.ts",
+      "src/components/db.ts",
+      "index.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
