@@ -7,4 +7,3 @@ The gist:
 The tech:
   Markov Chain generation of text seeded by POSTed message
   Sourced from text message conversations on my phone
-  
