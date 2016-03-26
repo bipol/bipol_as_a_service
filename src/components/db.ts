@@ -3,21 +3,35 @@ import config from "./config";
 
 let db = new sqlite3.Database(config.dbName);
 
-interface Messages {
-  data: Array<string>;
+interface Message {
+  text: string;
+}
+
+interface Messages extends Array<any>{
+  [index: number]: Message;
 }
 
 // get messages from the database
-function getMessages(isMine = false): Messages {
-  if (isMine) { // grab all of my messages
-    let query = 'select text from messages where is_from_me EQUALS 1';
-    let data = db.run(query);
-    console.log(data);
+function getMessages(cb: (messages: Messages) => void, handle_id=false): void {
+  let query = handle_id ? 'select text from message where handle_id=?' : 'select text from message where is_from_me=1' ;
+  let result = [];
+  if (handle_id) {
+    db.all(query, handle_id, (err, data) => {
+      if (!err) {
+        cb(data);
+      } else {
+        console.error(err);
+      }
+    });
   } else {
-    // grab
-    let query = 'select text from messages where is_from_me EQUALS 0';
-    let data = db.run(query);
-    console.log(data);
+    db.all(query, (err, data) => {
+      if (!err) {
+        cb(data);
+      } else {
+        console.error(err);
+      }
+    });
   }
-  return { data: ['test'] };
 };
+
+export { getMessages };
