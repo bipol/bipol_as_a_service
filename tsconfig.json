@@ -9,6 +9,7 @@
 	    "typings/browser.d.ts",
       "src/components/config.ts",
       "src/components/db.ts",
+      "src/components/markov.ts",
       "index.ts"
     ],
     "exclude": [
