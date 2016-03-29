@@ -6,6 +6,8 @@
 
 
 import * as express from "express";
+import * as markov from "./src/components/markov";
+import * as path from "path";
 
 var app = express();
 
@@ -16,8 +18,47 @@ var server = app.listen(process.env.PORT || 8000, function () {
 	console.log('bass listening at http://%s:%s', host, port);
 });
 
+app.use(express.static('src'));
+
 //routes
-app.get('/bipol', (req, res) => {
-	let message = req.body;
-  res.sendFile('./src/index.html');
+app.get('/', (req, res) => {
+	res.sendFile(path.join(__dirname + '/index.html'));
 });
+
+app.get('/bipol', (req, res) => {
+	this.res = res;
+	markov.generateTM(callbackTM.bind(this));
+});
+
+function callbackTM(tm, ss) {
+	var seed = Math.floor((Math.random() * ss.length) + 0);
+	var state = ss[seed];
+	var sentence = [];
+	while ( tm[state].length != 0 && state != '') {
+		var seed = Math.random();
+		sentence.push(state);
+		var probabilities = {};
+		var total = 1;
+		// get probabilities
+		for (var nextState in tm[state]) {
+			// don't worry about helper value
+			if (nextState == 'length') {
+				continue;
+			// if there is only one state to transition to
+			} else {
+				probabilities[nextState] = total;
+				total = total - tm[state][nextState];
+			}
+		}
+		if (tm[state].length == 1) {
+			state = nextState;
+			continue;
+		}
+		for (var nextState in probabilities) {
+			if (seed < probabilities[nextState]) {
+				state = nextState;
+			}
+		}
+	}
+  this.res.send(sentence.join(' '));
+}
