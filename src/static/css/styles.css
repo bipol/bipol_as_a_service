@@ -1,0 +1,88 @@
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+  }
+}
+
+nav {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center:
+}
+nav .logo {
+  margin:.3em 0;
+  font-size: 52pt;
+  font-weight:bold;
+}
+nav .subtitle {
+  display: flex;
+  right: 0px;
+}
+
+.curl {
+	width:120px;
+	height:120px;
+	position: absolute;
+	top:0;
+	right:0;
+	background :
+    linear-gradient(
+      225deg,
+      rgba(255, 255, 255, 0),
+      rgba(243, 243, 243, 0) 45%,
+      rgba(167, 159, 159, 0.42) 50%,
+      #aaa 50%,
+      #bbb 56%,
+      #ccc 62%,
+      #f3f3f3 80%,
+      #fff 100%
+    ),
+    url('../../static/img/github.gif');
+	box-shadow : 0 0 10px rgba(0, 0, 0, .2);
+}
+
+.container {
+  padding: 10px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.container .endpoint {
+  color: #AA3939;
+  background-color: rgba(245, 245, 220, 0.37);
+  padding: 5px;
+}
+
+.text-box {
+  display: flex;
+  flex-direction: column;;
+  width: 80%;
+}
+
+.text-box .text-rec {
+  align-self: flex-start;
+}
+.text-box .text-rec .text-message-rec {
+  border-radius:10px;
+  background-color: #DEDFE5;
+  padding: 10px;
+  max-width: 400px;
+}
+
+.text-box .text-sent {
+  align-self: flex-end;
+}
+
+.text-box .text-sent .text-message-sent {
+  max-width: 400px;
+  border-radius:10px;
+  background-color: #3395F6;
+  padding: 10px;
+  color:white;
+}
+
+#find-me {
+  text-align: center;
+}
